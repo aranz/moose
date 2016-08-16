@@ -1,0 +1,13 @@
+constraint.required=必須
+constraint.min=最小値： {0}
+constraint.max=最大値： {0}
+constraint.minLength=最小の長さ： {0}
+constraint.maxLength=最大の長さ： {0}
+
+help.username = ユーザ名を入力してください。
+
+error.required = 必須項目です。
+error.maxLength={0}文字より短くなければいけません。
+error.minLength={0}文字より長くなければいけません
+error.password_is_all_number = パスワードは英数記号を含めてください。
+error.password_is_all_letter = パスワードは英数記号を含めてください。

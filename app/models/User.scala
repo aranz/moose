@@ -4,6 +4,7 @@ import java.sql.Timestamp
 
 import infra.TimeUtil
 import play.api.Play
+import play.api.data.validation.{Constraint, Invalid, Valid, ValidationError}
 import play.api.db.slick.{DatabaseConfigProvider, HasDatabaseConfig}
 import slick.driver.JdbcProfile
 
@@ -28,6 +29,7 @@ object User
              firstname : Option[String] = None,
              lastname : Option[String] = None) : User =
   {
+    require(Option(username).isDefined)
     require(Option(password).isDefined)
     val now = TimeUtil.currentTimestamp
     User(id = 0, username = username, password = password,
@@ -66,7 +68,7 @@ object UserRepository extends HasDatabaseConfig[JdbcProfile]
     def password = column[String]("password")
     def createdAt = column[Timestamp]("created_at")
     def updatedAt = column[Timestamp]("updated_at")
-    def * = (id, firstname.?, lastname.?,
-      username, password, createdAt, updatedAt) <> ((User.apply _).tupled, User.unapply _)
+    def * = (id, username, password,
+      firstname.?, lastname.?, createdAt, updatedAt) <> ((User.apply _).tupled, User.unapply _)
   }
 }

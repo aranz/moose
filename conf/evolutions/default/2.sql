@@ -1,8 +1,8 @@
 # --- !Ups
 CREATE TABLE users (
   id         BIGSERIAL NOT NULL PRIMARY KEY,
-  firstname  TEXT      NOT NULL  DEFAULT '',
-  lastname   TEXT      NOT NULL  DEFAULT '',
+  firstname  TEXT      DEFAULT NULL,
+  lastname   TEXT      DEFAULT NULL,
   username   TEXT      NOT NULL  DEFAULT '',
   password   TEXT      NOT NULL,
   created_at TIMESTAMP,

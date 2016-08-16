@@ -1,0 +1,44 @@
+@(form: Form[User])(implicit messages: Messages)
+@user.layout("Test") {
+  @helper.form(routes.UserController.add) {
+      <div class="form-group">
+        <label for="username">ユーザ名</label>(@messages("constraint.required"))
+        <input name="username" id="username" type="text" class="form-control"
+               placeholder="ユーザ名" value="@form("username").value">
+        @if(form.error("username").isDefined) {
+          <div>@messages(form.error("username").get.message)</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="password">パスワード</label>(@messages("constraint.required"))
+        <input name="password" id="password" type="password" class="form-control"
+               placeholder="パスワード" value="@form("password").value">
+        @for(error <- form("password").errors) {
+          <div>@error.message</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="firstname">ファーストネーム</label>
+        <input name="firstname" id="firstname" type="text" class="form-control"
+               placeholder="ファーストネーム" value="@form("firstname").value">
+        @if(form.error("firstname").isDefined) {
+          <div>@messages(form.error("firstname").get.message)</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">ラストネーム</label>
+        <input name="lastname" id="lastname" type="text" class="form-control"
+               placeholder="ラストネーム" value="@form("lastname").value">
+        @if(form.error("lastname").isDefined) {
+          <div>@messages(form.error("lastname").get.message)</div>
+        }
+      </div>
+
+      <div class="form-group">
+        <input type="submit" class="btn btn-default">
+      </div>
+  }
+}

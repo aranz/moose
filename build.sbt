@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "org.webjars" %% "webjars-play"  % "2.5.0",
   "org.webjars" % "bootstrap" % "3.3.6",
   "org.webjars" % "font-awesome" % "4.6.3",
+  "de.svenkubiak" % "jBCrypt" % "0.4",
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 
